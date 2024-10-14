@@ -1,3 +1,4 @@
+import 'package:barber_app/pages/booking.dart';
 import 'package:barber_app/pages/home.dart';
 import 'package:barber_app/pages/onboarding.dart';
 import 'package:flutter/material.dart';
