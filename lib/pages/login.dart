@@ -1,3 +1,4 @@
+import "package:barber_app/pages/signup.dart";
 import "package:flutter/gestures.dart";
 import "package:flutter/material.dart";
 
@@ -143,7 +144,7 @@ class _LoginState extends State<Login> {
                                 ),
                                 recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Signup()));
                                 }
                           ),
                         ]),
