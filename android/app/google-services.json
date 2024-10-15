@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "897840345231",
+    "project_id": "beautify-bd62c",
+    "storage_bucket": "beautify-bd62c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897840345231:android:b2e13b56eea5a492bc80fa",
+        "android_client_info": {
+          "package_name": "com.example.barber_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-cOD_o_rTaugKXI9qDnrHpXgbPP2ojCc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
