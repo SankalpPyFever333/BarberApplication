@@ -9,6 +9,7 @@ class Booking extends StatefulWidget {
 }
 
 class _BookingState extends State<Booking> {
+  DateTime _selectedDateTime = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +56,38 @@ class _BookingState extends State<Booking> {
                   color: const Color.fromARGB(255, 255, 255, 255),
                   fontWeight: FontWeight.bold,
                   fontSize: 20),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: Color(0xFFb4817e),
+                  borderRadius: BorderRadius.circular(20)),
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.only(top: 10, bottom: 10),
+              margin: EdgeInsets.only(right: 10),
+              child: Column(
+                children: [
+                  Text(
+                    "Set a Date",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "${_selectedDateTime.day}/${_selectedDateTime.month}/${_selectedDateTime.year}",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
