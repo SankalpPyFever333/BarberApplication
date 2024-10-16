@@ -1,8 +1,10 @@
 import "package:barber_app/pages/home.dart";
 import "package:barber_app/pages/login.dart";
+import "package:barber_app/services/database.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:flutter/material.dart";
 import "package:flutter/gestures.dart";
+import "package:random_string/random_string.dart";
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -23,10 +25,28 @@ class _SignupState extends State<Signup> {
 
   registration() async {
     try {
+      // below code stores the authentication details.
       if (email != null && password != null && name != null) {
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email!, password: password!);
       }
+
+      String id = randomAlphaNumeric(10); //generate a length 10 id
+
+      // below code store the user's data in the collection.
+
+      Map<String, dynamic> userInfo = {
+        "name": nameController.text,
+        "email": emailController.text,
+        "password": passwordController.text,
+        "id": id,
+        "Image":
+            "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600"
+      };
+
+      // add above data to collection:
+      await DatabaseMethods().addUserDetails(userInfo, id);
+
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
         "Registered successfully",
@@ -173,7 +193,6 @@ class _SignupState extends State<Signup> {
                             email = emailController.text;
                             name = nameController.text;
                             password = passwordController.text;
-                            
                           });
                         }
 
