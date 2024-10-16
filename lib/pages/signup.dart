@@ -1,6 +1,7 @@
 import "package:barber_app/pages/home.dart";
 import "package:barber_app/pages/login.dart";
 import "package:barber_app/services/database.dart";
+import "package:barber_app/services/shared_pref.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:flutter/material.dart";
 import "package:flutter/gestures.dart";
@@ -32,6 +33,13 @@ class _SignupState extends State<Signup> {
       }
 
       String id = randomAlphaNumeric(10); //generate a length 10 id
+
+      // saving data to device using shared_preference:
+
+      await SharedPreferenceHelper().saveUserEmail(emailController.text);
+      await SharedPreferenceHelper().saveUserName(nameController.text);
+      await SharedPreferenceHelper().saveUserId(passwordController.text);
+      await SharedPreferenceHelper().saveUserImage("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600");
 
       // below code store the user's data in the collection.
 
