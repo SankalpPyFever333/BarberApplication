@@ -12,7 +12,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  String name = '', email = '', password = '';
+  String? name, email, password;
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -23,9 +23,9 @@ class _SignupState extends State<Signup> {
 
   registration() async {
     try {
-      if (email.isEmpty && password.isEmpty && name.isEmpty) {
+      if (email != null && password != null && name != null) {
         UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
+            .createUserWithEmailAndPassword(email: email!, password: password!);
       }
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
@@ -46,6 +46,13 @@ class _SignupState extends State<Signup> {
             content: Text(
           "Account already exists",
           style: TextStyle(fontSize: 20, fontFamily: "Signi"),
+        )));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(
+          "internal server error! Try again later",
+          style:
+              TextStyle(fontFamily: "Signi", fontSize: 20, color: Colors.black),
         )));
       }
     }
@@ -166,6 +173,7 @@ class _SignupState extends State<Signup> {
                             email = emailController.text;
                             name = nameController.text;
                             password = passwordController.text;
+                            
                           });
                         }
 
