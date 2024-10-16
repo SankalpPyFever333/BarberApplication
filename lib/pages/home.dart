@@ -1,4 +1,5 @@
 import "package:barber_app/pages/booking.dart";
+import "package:barber_app/services/shared_pref.dart";
 import "package:flutter/material.dart";
 
 class Home extends StatefulWidget {
@@ -8,6 +9,34 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  String? name , image; // these are used to display name of logged in used and his image.
+
+// we will fetch data from shared preference.
+
+getDatafromSharedPref() async{
+  name = await SharedPreferenceHelper() .getUserName();
+  image = await SharedPreferenceHelper().getUserImage();
+
+  setState(() {
+    
+  });
+
+}
+
+  getonTheLoad() async{
+    await getDatafromSharedPref();
+    setState(() {
+      
+    });
+  }
+
+  @override
+  void initState() {
+    getonTheLoad();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +60,7 @@ class _HomeState extends State<Home> {
                           fontSize: 20),
                     ),
                     Text(
-                      "Sankalp Pandey",
+                      name!,
                       style: TextStyle(
                           color: const Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.bold,
@@ -41,8 +70,8 @@ class _HomeState extends State<Home> {
                 ),
                 ClipRRect(
                     borderRadius: BorderRadius.circular(50),
-                    child: Image.asset(
-                      "images/boy.jpg",
+                    child: Image.network(
+                      image!,
                       fit: BoxFit.cover,
                       height: 60,
                       width: 60,
