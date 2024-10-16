@@ -10,6 +10,14 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController =  TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +65,7 @@ class _SignupState extends State<Signup> {
                         fontFamily: "Signi"),
                   ),
                   TextField(
+                    controller: nameController,
                     decoration: InputDecoration(
                       hintText: "Name",
                       labelText: "Enter Name",
@@ -75,6 +84,7 @@ class _SignupState extends State<Signup> {
                         fontFamily: "Signi"),
                   ),
                   TextField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       hintText: "Email",
                       labelText: "Enter Email",
@@ -85,6 +95,7 @@ class _SignupState extends State<Signup> {
                     height: 40,
                   ),
                   TextField(
+                    controller: passwordController,
                     decoration: InputDecoration(
                       hintText: "Password",
                       labelText: "Enter Password",
