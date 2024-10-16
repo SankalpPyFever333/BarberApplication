@@ -8,4 +8,10 @@ class DatabaseMethods {
         .doc(id)
         .set(userInfoMap);
   }
+
+  Future addUserBooking(Map<String, dynamic> userBookingIngoMap) async {
+    return await FirebaseFirestore.instance
+        .collection('booking')
+        .add(userBookingIngoMap);
+  }
 }

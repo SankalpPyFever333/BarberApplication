@@ -1,9 +1,10 @@
+import "package:barber_app/services/database.dart";
+import "package:barber_app/services/shared_pref.dart";
 import "package:flutter/material.dart";
 
 class Booking extends StatefulWidget {
   String service;
   Booking({required this.service});
-
   @override
   State<Booking> createState() => _BookingState();
 }
@@ -32,6 +33,31 @@ class _BookingState extends State<Booking> {
         _currentTime = timePicked;
       });
     }
+  }
+
+  String? name,
+      image,
+      userEmail; // these are used to display name of logged in used and his image.
+
+// we will fetch data from shared preference.
+
+  getDatafromSharedPref() async {
+    name = await SharedPreferenceHelper().getUserName();
+    image = await SharedPreferenceHelper().getUserImage();
+    userEmail = await SharedPreferenceHelper().getUserEmail();
+
+    setState(() {});
+  }
+
+  getonTheLoad() async {
+    await getDatafromSharedPref();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getonTheLoad();
+    super.initState();
   }
 
   @override
@@ -176,25 +202,40 @@ class _BookingState extends State<Booking> {
               ),
             ),
             SizedBox(height: 20.0),
-
             GestureDetector(
-              onTap: (){
-
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: const Color(0xFFdf711a),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Center(
-                  child: const Text(
-                    "BOOK NOW",
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+              onTap: () {},
+              child: GestureDetector(
+                onTap: () async {
+                  Map<String, dynamic> userbookingInfoMap = {
+                    "Service": widget.service,
+                    "Date":
+                        "${_selectedDateTime.day}/${_selectedDateTime.month}/${_selectedDateTime.year}"
+                            .toString(),
+                    "Time": _currentTime.format(context).toString(),
+                    "Username": name,
+                    "Image": image,
+                    "email": userEmail,
+                  };
+                  await DatabaseMethods().addUserBooking(userbookingInfoMap);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Service booked successfully")));
+                },
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFdf711a),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Center(
+                    child: const Text(
+                      "BOOK NOW",
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
