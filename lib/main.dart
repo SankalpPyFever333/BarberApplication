@@ -1,3 +1,4 @@
+import 'package:barber_app/Admin/admin_login.dart';
 import 'package:barber_app/pages/booking.dart';
 import 'package:barber_app/pages/home.dart';
 import 'package:barber_app/pages/login.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Login(),
+      home: const AdminLogin(),
     );
   }
 }

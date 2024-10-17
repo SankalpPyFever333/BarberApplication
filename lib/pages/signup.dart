@@ -39,7 +39,8 @@ class _SignupState extends State<Signup> {
       await SharedPreferenceHelper().saveUserEmail(emailController.text);
       await SharedPreferenceHelper().saveUserName(nameController.text);
       await SharedPreferenceHelper().saveUserId(passwordController.text);
-      await SharedPreferenceHelper().saveUserImage("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600");
+      await SharedPreferenceHelper().saveUserImage(
+          "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600");
 
       // below code store the user's data in the collection.
 
@@ -175,6 +176,14 @@ class _SignupState extends State<Signup> {
                     ),
                     SizedBox(
                       height: 40,
+                    ),
+                    Text(
+                      "Password",
+                      style: TextStyle(
+                          color: Color(0xFFB91635),
+                          fontSize: 23,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Signi"),
                     ),
                     TextFormField(
                       validator: (value) {
