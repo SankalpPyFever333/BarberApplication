@@ -111,10 +111,7 @@ class _AdminLoginState extends State<AdminLogin> {
                     GestureDetector(
                       onTap: () {
                         if (_formkey.currentState!.validate()) {
-                          setState(() {
-                            username = usernameController.text;
-                            password = passwordController.text;
-                          });
+                          loginAdmin();
                         }
                       },
                       child: Container(
