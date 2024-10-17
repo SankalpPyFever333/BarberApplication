@@ -1,11 +1,20 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Add the Google services Gradle plugin here
+        classpath "com.google.gms:google-services:4.4.2" // Use the appropriate version
+    }
+}
+
 allprojects {
     repositories {
         google()
         mavenCentral()
     }
 }
-
-id("com.google.gms:google-services") version "4.4.2"
 
 rootProject.buildDir = "../build"
 subprojects {
