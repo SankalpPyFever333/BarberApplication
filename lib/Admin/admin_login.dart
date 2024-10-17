@@ -1,3 +1,4 @@
+import 'package:barber_app/Admin/display_booking_to_admin.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -165,12 +166,10 @@ class _AdminLoginState extends State<AdminLogin> {
             "invalid password",
             style: TextStyle(fontFamily: "Signi"),
           )));
+        } else {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => BookingDetailToAdmin()));
         }
-
-        else{
-          
-        }
-
       });
     });
   }
