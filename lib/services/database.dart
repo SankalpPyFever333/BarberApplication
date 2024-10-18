@@ -19,4 +19,11 @@ class DatabaseMethods {
   Future<Stream<QuerySnapshot>> getBooking() async {
     return await FirebaseFirestore.instance.collection("booking").snapshots();
   }
+
+  Future deletebooking(String id) async {
+    return await FirebaseFirestore.instance
+        .collection("booking")
+        .doc(id)
+        .delete();
+  }
 }
