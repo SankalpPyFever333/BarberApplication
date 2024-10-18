@@ -1,3 +1,4 @@
+import "package:barber_app/Admin/admin_login.dart";
 import "package:barber_app/pages/home.dart";
 import "package:barber_app/pages/signup.dart";
 import "package:firebase_auth/firebase_auth.dart";
@@ -73,7 +74,7 @@ class _LoginState extends State<Login> {
                       fontWeight: FontWeight.bold),
                 )),
             Container(
-              height: MediaQuery.of(context).size.height / 2,
+              height: MediaQuery.of(context).size.height ,
               width: MediaQuery.of(context).size.width,
               margin:
                   EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
@@ -217,7 +218,28 @@ class _LoginState extends State<Login> {
                         ),
                       ],
                     ),
-                    
+                    SizedBox(
+                      height: 50,
+                    ),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> AdminLogin()));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Are an Admin?",
+                            style: TextStyle(
+                              color: Color(0xFF311917),
+                              fontSize: 17,
+                              fontFamily: "Signi",
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
