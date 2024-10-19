@@ -23,7 +23,7 @@ class _BookingDetailToAdminState extends State<BookingDetailToAdmin> {
     super.initState();
   }
 
-  Widget allBookings() {
+  Widget showAllNotes() {
     return StreamBuilder(
         stream: BookingStream,
         builder: (context, AsyncSnapshot snapshot) {
@@ -169,7 +169,7 @@ class _BookingDetailToAdminState extends State<BookingDetailToAdmin> {
           children: [
             Center(
               child: Text(
-                "All Bookings",
+                "All Notes",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,
@@ -179,7 +179,7 @@ class _BookingDetailToAdminState extends State<BookingDetailToAdmin> {
             ),
             SizedBox(height: 30),
             Expanded(
-              child: allBookings(),
+              child: showAllNotes(),
             ),
             SizedBox(height: 30),
           ],

@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(
-          "internal server error! Try again later",
+          e.code,
           style:
               TextStyle(fontFamily: "Signi", fontSize: 20, color: Colors.black),
         )));
@@ -67,14 +67,14 @@ class _LoginState extends State<Login> {
                   Color(0xFF311917)
                 ])),
                 child: Text(
-                  "Hello\nSign in",
+                  "Hello\nLog in",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 32,
                       fontWeight: FontWeight.bold),
                 )),
             Container(
-              height: MediaQuery.of(context).size.height ,
+              height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               margin:
                   EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
@@ -222,8 +222,11 @@ class _LoginState extends State<Login> {
                       height: 50,
                     ),
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> AdminLogin()));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AdminLogin()));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
